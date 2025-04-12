@@ -64,7 +64,8 @@
 }
 
 .bg-orange {
-	background-color: #FFA500; /* 橘色 */
+	background-color: #FFA500; 
+	fill: #FFA500;
   }
   
 
