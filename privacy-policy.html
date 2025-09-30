@@ -23,9 +23,84 @@
       .back-home:hover {
         background-color: #0056b3;
       }
+
+      /* Navbar styles */
+      .site-navbar {
+        background: #ffffff;
+        border-bottom: 1px solid #e6e6e6;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      }
+      .site-navbar .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 20px;
+      }
+      .site-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .site-logo img {
+        height: 36px;
+      }
+      .nav-links {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        padding: 6px 8px;
+        border-radius: 4px;
+      }
+      .nav-links a:hover {
+        background: rgba(0,123,255,0.08);
+        color: #007bff;
+      }
+
+      /* mobile */
+      .menu-toggle {
+        display: none;
+        background: transparent;
+        border: none;
+        font-size: 20px;
+      }
+      @media (max-width: 768px) {
+        .nav-links { display: none; flex-direction: column; width: 100%; margin-top: 8px; }
+        .nav-links.show { display:flex; }
+        .site-navbar .container { flex-wrap: wrap; }
+        .menu-toggle { display: block; }
+      }
     </style>
   </head>
   <body>
+
+    <!-- Navbar -->
+    <header class="site-navbar">
+      <div class="container">
+        <div class="site-logo">
+          <a href="index.html"><img src="https://sean-jou.github.io/learnenglish/images/logo.png" alt="logo"></a>
+          <a href="index.html" style="text-decoration:none; color:#333; font-weight:700; font-size:18px;">注音學英文</a>
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html">主頁</a>
+          <a href="#userLicense" class="scrollTo">免責聲明</a>
+          <a href="#privacy" class="scrollTo">隱私權條款</a>
+          <a href="privacy-policy.html">隱私權政策</a>
+          <a href="mailto: service@chithink.com?subject=Chithink-客戶問題反應">聯絡我們</a>
+        </nav>
+      </div>
+    </header>
+
     <div class="page text-center">
       <!-- 返回主頁按鈕 -->
       <div style="text-align: left; padding: 10px 20px;">
@@ -132,6 +207,20 @@
     </div>
 
     <div class="snackbars" id="form-output-global"></div>
+
+    <script>
+      // menu toggle for mobile
+      (function(){
+        var toggle = document.getElementById('menuToggle');
+        var nav = document.getElementById('navLinks');
+        if(toggle && nav){
+          toggle.addEventListener('click', function(){
+            nav.classList.toggle('show');
+          });
+        }
+      })();
+    </script>
+
     <script src="js/core.min.js"></script>
     <script src="js/script.js"></script>
   </body>
