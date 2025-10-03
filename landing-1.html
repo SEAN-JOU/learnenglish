@@ -11,13 +11,14 @@
 	<link rel="stylesheet" href="assets/css/theme-default.css">
 	<link rel="stylesheet" href="assets/css/all.min.css">
 	<link rel="stylesheet" href="assets/css/responsive.css">
+	<link rel="stylesheet" href="assets/css/scrollCue.css" type="text/css">
 
 </head>
 <body>
 
 
 	
-	<div class="header-area" id="sticky-header" id="sticky-header">
+<div class="header-area" id="sticky-header" id="sticky-header">
 		<div class="container-fluid">
 			<div class="m-logo">
 				<a href="#"><span class="logo-txt"></span></a>
@@ -35,37 +36,13 @@
 						</div>
 						<div class="header-menu">
 							<ul>
-								<li><a href="index.html">home</a>
-									<div class="sub-menu">
-										<ul>
-											<li><a href="index.html">Home Version One</a></li>
-											<li><a href="landing-1.html">Landing version One</a></li>
-										</ul>
-									</div>
-								</li>
-								<li><a href="about.html">about us</a></li>
-								<li><a href="service.html">course</a></li>
-								<li><a href="pricing.html">pricing</a></li>
-								<li><a href="#">pages</a>
-									<div class="sub-menu">
-										<ul>
-											<li><a href="about.html">about us</a></li>
-											<li><a href="contact.html">contact</a></li>
-											<li><a href="service.html">service</a></li>
-											<li><a href="pricing.html">pricing</a></li>
-										</ul>
-									</div>
-								</li>
-								<li><a href="#">blog</a>
-									<div class="sub-menu">
-										<ul>
-											<li><a href="blog-list.html">Blog-list</a></li>
-											<li><a href="blog-details.html">Blog-details</a></li>
-											<li><a href="blog-2column.html">Blog-2column</a></li>
-										</ul>
-									</div>
-								</li>
-								<li><a href="contact.html">contact</a></li>
+								<li><a href="#home">home</a></li>
+								<li><a href="#about">about</a></li>
+								<li><a href="#service">service</a></li>
+								<li><a href="#pricing">pricing</a></li>
+								<li><a href="#testimonial">testimonial</a></li>
+								<li><a href="#blog">blog</a></li>
+								<li><a href="#contact">contact</a></li>
 							</ul>
 						</div>
 						<div class="header-button">
@@ -112,19 +89,19 @@
 <!--==================================================-->
 <!-- Start hero-section -->
 <!--==================================================-->
-<div class="hero-section align-items-center d-flex">
+<div class="hero-section align-items-center d-flex" id="home">
 	<div class="container">
 		<div class="row"> 
 			<div class="col-lg-12 col-md-12">
-				<div class="hero-content">
+				<div class="hero-content" data-cues="slideInUp">
 					<div class="hero-title">
 						<h1>When you’re behind the wheel Driving is your only job</h1>
 					</div>
-					<div class="hero-text">
+					<div class="hero-text" data-cues="slideInUp">
 						<p>Your purpose when driving is not to arrive at your destination safely or quickly. when driving is...to impress your personality on the road. </p>
 					</div>
 				</div>
-				<div class="hero-button">
+				<div class="hero-button" data-cues="slideInUp">
 					<a href="#">INSTRUCTOR</a>
 					<a class="hero-button2" href="#">INSTRUCTOR</a>
 				</div>
@@ -135,15 +112,15 @@
 <!--==================================================-->
 <!-- Start contact-area -->
 <!--==================================================-->
-<div class="contact-area">
+<div class="contact-area" id="contact">
 	<div class="container">
 		<div class="row upper-bg">
 			<div class="col-lg-12 col-md-12">
-				<div class="sideber-title">
+				<div class="sideber-title" data-cues="slideInUp">
 					<h3>Find Your Course</h3>
 				</div>
 				<div class="col-lg-12 col-md-12">
-					<form action="https://formspree.io/f/myyleorq" method="POST" id="dreamit-form">
+					<form action="https://formspree.io/f/myyleorq" method="POST" id="dreamit-form" data-cues="slideInUp">
 						<div class="row">
 							<div class="col-lg-4 col-md-4">
 								<div class="form_box">
@@ -189,14 +166,11 @@
 <!--==================================================-->
 <!-- Start choose-area -->
 <!--==================================================-->
-
-
-
-<div class="choose-area">
+<div class="choose-area" id="about">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6 col-md-6">
-				<div class="choose-title">
+				<div class="choose-title" data-cues="slideInUp">
 					<h4>who we are</h4>
 					<h2>why<span>choose</span>us</h2>
 					<p>Your purpose when driving is not to arrive at your destination safely or quickly. Your purpose when driving is...to impress your personality on the road. destination safely or quickly. </p>
@@ -204,7 +178,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-6 col-md-6">
-						<div class="choose-menu-box">
+						<div class="choose-menu-box" data-cues="slideInUp">
 							<ul>
 								<li><i class="fas fa-check"></i>Unlimited Car Support</li>
 								<li><i class="fas fa-check"></i>Special Class</li>
@@ -212,12 +186,12 @@
 								<li><i class="fas fa-check"></i>Safty First</li>
 							</ul>
 						</div>
-						<div class="choose-button">
+						<div class="choose-button" data-cues="slideInUp">
 							<a href="#">know more</a>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6">
-						<div class="choose-menu-box">
+						<div class="choose-menu-box" data-cues="slideInUp">
 							<ul>
 								<li><i class="fas fa-check"></i>Safty Firs</li>
 								<li><i class="fas fa-check"></i>Any Time Any Where</li>
@@ -228,7 +202,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-lg-6 col-md-6">
+			<div class="col-lg-6 col-md-6" data-cues="slideInUp">
 				<img src="assets/images/school.png" alt="">
 			</div>
 		</div>
@@ -237,14 +211,14 @@
 <!--==================================================-->
 <!-- Start service-area -->
 <!--==================================================-->
-<div class="service-area">
+<div class="service-area" id="service">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12 col-md-12">
-				<div class="main-title">
+				<div class="main-title" data-cues="slideInUp">
 					<h1>drivhool courses</h1>
 				</div>
-				<div class="section-title">
+				<div class="section-title" data-cues="slideInUp">
 					<div class="sub-title">
 						<h2>Multilen <span>Courses</span></h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. </p>
@@ -255,7 +229,7 @@
 			<div class="row pt-60">
 				<div class="owl-carousel service_list">
 					<div class="col-lg-12 col-md-12">
-						<div class="single-service-box">
+						<div class="single-service-box" data-cues="slideInUp">
 							<div class="service-thumb">
 								<img src="assets/images/driving-school2.jpg" alt="">
 								<div class="single-title">
@@ -280,7 +254,7 @@
 						</div>
 					</div>
 					<div class="col-lg-12 col-md-12">
-						<div class="single-service-box">
+						<div class="single-service-box" data-cues="slideInUp">
 							<div class="service-thumb">
 								<img src="assets/images/driving-school1.jpg" alt="">
 								<div class="single-title">
@@ -305,7 +279,7 @@
 						</div>
 					</div>
 					<div class="col-lg-12 col-md-12">
-						<div class="single-service-box">
+						<div class="single-service-box" data-cues="slideInUp">
 							<div class="service-thumb">
 								<img src="assets/images/driving-school2.jpg" alt="">
 								<div class="single-title">
@@ -331,7 +305,7 @@
 					</div>
 
 					<div class="col-lg-12 col-md-12">
-						<div class="single-service-box">
+						<div class="single-service-box" data-cues="slideInUp">
 							<div class="service-thumb">
 								<img src="assets/images/new.jpg" alt="">
 								<div class="single-title">
@@ -356,7 +330,7 @@
 						</div>
 					</div>
 					<div class="col-lg-12 col-md-12">
-						<div class="single-service-box">
+						<div class="single-service-box" data-cues="slideInUp">
 							<div class="service-thumb">
 								<img src="assets/images/new2.jpg" alt="">
 								<div class="single-title">
@@ -395,12 +369,12 @@
 	<div class="container">
 		<div class="row exp">
 			<div class="col-lg-3 col-md-3 pr-0">
-				<div class="experience-title">
+				<div class="experience-title" data-cues="slideInUp">
 					<h1>27</h1>
 				</div>
 			</div>
 			<div class="col-lg-9 col-md-9 pl-0">
-				<div class="experience-titles">
+				<div class="experience-titles" data-cues="slideInUp">
 					<h2>Years of <span>Experienced</span> </h2>
 					<h3>To see our all activities please click the video icon</h3>
 					<div class="rs-video">
@@ -418,14 +392,14 @@
 <!--==================================================-->
 <!-- Start tab-area-->
 <!--==================================================-->
-<div class="tab-area">
+<div class="tab-area" id="pricing">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-md-12">
-				<div class="main-title">
+				<div class="main-title" data-cues="slideInUp">
 					<h1>pricing plan</h1>
 				</div>
-				<div class="section-title">
+				<div class="section-title" data-cues="slideInUp">
 					<div class="sub-title">
 						<h2><span>pricing</span>plan</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. </p>
@@ -435,7 +409,7 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-12 col-md-12 padding-bottom">
-				<ul class="tabs">
+				<ul class="tabs" data-cues="slideInUp">
 					<li class="active" rel="tab1">pricing plan a</li>
 					<li rel="tab2">pricing plan b</li>
 					<li rel="tab3">pricing plan c</li>
@@ -443,7 +417,7 @@
 				</ul>
 				<div class="tab_container">
 					<h3 class="d_active tab_drawer_heading" rel="tab1">Tab 1</h3>
-					<div id="tab1" class="tab_content">
+					<div id="tab1" class="tab_content" data-cues="slideInUp">
 						<ul class="accordion">
 							<li>
 								<span>Pricing Plan a Is Perfect Plan For Everyone</span>
@@ -474,7 +448,7 @@
 					</div>
 					<!-- #tab1 -->
 					<h3 class="tab_drawer_heading" rel="tab2"> Token  </h3>
-					<div id="tab2" class="tab_content">
+					<div id="tab2" class="tab_content" data-cues="slideInUp">
 						<ul class="accordion">
 							<li>
 								<span>Pricing Plan b Is Perfect Plan For Everyone</span>
@@ -505,7 +479,7 @@
 					</div>
 					<!-- #tab2 -->
 					<h3 class="tab_drawer_heading" rel="tab3">  Client </h3>
-					<div id="tab3" class="tab_content">
+					<div id="tab3" class="tab_content" data-cues="slideInUp">
 						<ul class="accordion">
 							<li>
 								<span>Pricing Plan C Is Perfect Plan For Everyone</span>
@@ -536,7 +510,7 @@
 					</div>
 					<!-- #tab3 -->
 					<h3 class="tab_drawer_heading" rel="tab4"> Pre ICO</h3>
-					<div id="tab4" class="tab_content">
+					<div id="tab4" class="tab_content" data-cues="slideInUp">
 						<ul class="accordion">
 							<li>
 							<span>Pricing Plan d Is Perfect Plan For Everyone</span>
@@ -574,19 +548,19 @@
 <!--==================================================-->
 <!-- Start testi-setion-area-->
 <!--==================================================-->
-<div class="testi-setion-area">
+<div class="testi-setion-area" id="testimonial">
 	<div class="custom-container">
 		<div class="row align-items-center">
 			<div class="col-lg-6 col-md-12 p-0">
 
-				<div class="section-title2">
+				<div class="section-title2" data-cues="slideInUp">
 					<div class="sub-title">
 						<h4>Client Feedback</h4>
 						<h2><span>our</span> ACHIVEMENT</h2>
 					</div>
 				</div>
 				<div class="owl-carousel testi_list">
-					<div class="left-side">
+					<div class="left-side" data-cues="slideInUp">
 						<div class="single-testi-box">
 							<div class="testi-thumb">
 								<img src="assets/images/testi.png" alt="">
@@ -600,7 +574,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="left-side">
+					<div class="left-side" data-cues="slideInUp">
 						<div class="single-testi-box">
 							<div class="testi-thumb">
 								<img src="assets/images/testi.png" alt="">
@@ -614,7 +588,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="left-side">
+					<div class="left-side" data-cues="slideInUp">
 						<div class="single-testi-box">
 							<div class="testi-thumb">
 								<img src="assets/images/testi.png" alt="">
@@ -628,7 +602,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="left-side">
+					<div class="left-side" data-cues="slideInUp">
 						<div class="single-testi-box">
 							<div class="testi-thumb">
 								<img src="assets/images/testi.png" alt="">
@@ -645,7 +619,7 @@
 				</div>
 			</div>
 			<div class="col-lg-6 col-md-12 p-0">
-				<div class="right-side-2">
+				<div class="right-side-2" data-cues="slideInUp">
 					<div class="row upper12">
 						<div class="sub-title-2">
 							<h4>who we are</h4>
@@ -703,15 +677,15 @@
 <!--==================================================-->
 <!-- Start blog-area -->
 <!--==================================================-->
-<div class="blog-area">
+<div class="blog-area" id="blog">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-md-12">
 				<div class="col-lg-12">
-				<div class="main-title">
+				<div class="main-title" data-cues="slideInUp">
 					<h1>Latest News</h1>
 				</div>
-				<div class="section-title">
+				<div class="section-title" data-cues="slideInUp">
 					<div class="sub-title">
 						<h2><span>latest</span>news</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. </p>
@@ -722,7 +696,7 @@
 		</div>
 		<div class="row">
 			<div class="owl-carousel blog_list">
-				<div class="blog-single-box">
+				<div class="blog-single-box" data-cues="slideInUp">
 					<div class="blog-thumb">
 						<img src="assets/images/blog.png" alt="">
 						<div class="blog-text">
@@ -740,7 +714,7 @@
 					</div>
 					</div>
 				</div>
-				<div class="blog-single-box">
+				<div class="blog-single-box" data-cues="slideInUp">
 					<div class="blog-thumb">
 						<img src="assets/images/blog-1.png" alt="">
 						<div class="blog-text">
@@ -758,7 +732,7 @@
 					</div>
 					</div>
 				</div>
-				<div class="blog-single-box">
+				<div class="blog-single-box" data-cues="slideInUp">
 					<div class="blog-thumb">
 						<img src="assets/images/blog-2.png" alt="">
 						<div class="blog-text">
@@ -776,7 +750,7 @@
 					</div>
 					</div>
 				</div>
-				<div class="blog-single-box">
+				<div class="blog-single-box" data-cues="slideInUp">
 					<div class="blog-thumb">
 						<img src="assets/images/blog-1.png" alt="">
 						<div class="blog-text">
@@ -806,7 +780,7 @@
 		<div class="row abc">
 			<div class="test_list owl-carousel"> 	
 				<div class="col-lg-12 col-md-12">
-					<div class="testimonial-single-box">
+					<div class="testimonial-single-box" data-cues="slideInUp">
 						<div class="testimonial-content">
 						<div class="testimonial-icon">
 							<a href="#"><i class="fa-brands fa-x-twitter"></i></a>
@@ -819,7 +793,7 @@
 					</div>
 				</div>
 				<div class="col-lg-12 col-md-12">
-					<div class="testimonial-content">
+					<div class="testimonial-content" data-cues="slideInUp">
 						<div class="testimonial-icon">
 							<a href="#"><i class="fa-brands fa-x-twitter"></i></a>
 						</div>
@@ -830,7 +804,7 @@
 					</div>
 				</div>
 				<div class="col-lg-12 col-md-12">
-					<div class="testimonial-content">
+					<div class="testimonial-content" data-cues="slideInUp">
 						<div class="testimonial-icon">
 							<a href="#"><i class="fa-brands fa-x-twitter"></i></a>
 						</div>
@@ -851,7 +825,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12 col-md-12">
-				<div class="subscribe-area">
+				<div class="subscribe-area" data-cues="slideInUp">
 					<h3>Subscribe Newsletter</h3>
 					<div class="subscribe-form">
 						<form action="#">
@@ -864,7 +838,7 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-6 col-md-6">
-				<div class="single-footer-box">
+				<div class="single-footer-box" data-cues="slideInUp">
 					<div class="footer-content">
 						<div class="footer-logo">
 							<img src="assets/images/footer-logo.png" alt="">
@@ -883,7 +857,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="single-footer-box-2">
+				<div class="single-footer-box-2" data-cues="slideInUp">
 					<div class="footer-content">
 						<div class="footer-title">
 							<h3>services</h3>
@@ -899,7 +873,7 @@
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-6">
-				<div class="single-footer-box-2">
+				<div class="single-footer-box-2" data-cues="slideInUp">
 					<div class="footer-content">
 						<div class="footer-title">
 							<h3>Quick Contact</h3>
@@ -915,7 +889,7 @@
 		</div>
 		<div class="row upper">
 			<div class="col-lg-12 col-md-12">
-				<div class="copy-right-box">
+				<div class="copy-right-box" data-cues="slideInUp">
 					<div class="copy-right-title">
 						<h3>Copyright @ 2025 All Right Reserved. <a target="_blank" href="https://www.mobanwang.com/" title="网站模板">网站模板</a></h3>
 					</div>
@@ -924,19 +898,20 @@
 		</div>
 	</div>
 </div>
-	<!--==================================================-->
-	<!--start fTo Top-->
-	<!--===================================================-->
-	<div class="scroll-area">
-		<div class="top-wrap">
-			<div class="go-top-btn-wraper">
-				<div class="go-top go-top-button">
-					<i class="fas fa-arrow-up"></i>
-					<i class="fas fa-arrow-up"></i>
-				</div>
+<!--==================================================-->
+<!--start fTo Top-->
+<!--===================================================-->
+<div class="scroll-area">
+	<div class="top-wrap">
+		<div class="go-top-btn-wraper">
+			<div class="go-top go-top-button">
+				<i class="fas fa-arrow-up"></i>
+				<i class="fas fa-arrow-up"></i>
 			</div>
 		</div>
 	</div>
+</div>
+
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<!-- jquery js -->	
 		<script src="assets/js/vendor/jquery-3.2.1.min.js"></script>
@@ -971,6 +946,8 @@
 		<script src="assets/js/jquery.scrollUp.js"></script>
 		<!-- theme js -->	
 		<script src="assets/js/theme.js"></script>
+
+		<script src="assets/js/scrollCue.min.js"></script>
 
 		<script>
 			(function($) {
