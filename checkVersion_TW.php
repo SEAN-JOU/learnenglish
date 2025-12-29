@@ -1,0 +1,7 @@
+   <?php
+    $check = "{\"sysCode\":" . "\"" . "200" . "\"" .
+        ",\"sysMsg\":" . "\"" . "success" . "\"" .
+        ",\"data\":" . "{\"androidVersion\":\"5.9.0\",\"isAndroidForceUpdate\":true,\"androidURL\":\"https://play.google.com/store/apps/details?id=com.shaen.chinastockanalysis\",\"isAndroidError\":false,\"isAndroidErrorString\":\"臨時系統維護中\",\"isGooglePlay\":true,\"iosVersion\":\"5.9.0\",\"isIosForceUpdate\":true,\"iosURL\":\"https://apps.apple.com/us/app/%E9%8C%A1%E6%83%B3%E5%AF%B6/id1605929806\",\"isIosError\":false,\"isIosErrorString\":\"臨時系統維護中\",\"isAppStore\":true,\"menberCount\":\"0\"}}";
+    echo $check;
+    exit;
+    ?>
