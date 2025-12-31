@@ -2,7 +2,7 @@
   "sysCode": "200",
   "sysMsg": "",
   "data": {
-    "version": "1.5.0",
+    "version": "1.5.1",
     "isForceUpdate": true,
     "androidURL": "https://play.google.com/store/apps/details?id=com.shaen.China",
     "isError": false,
