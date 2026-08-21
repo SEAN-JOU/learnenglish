@@ -1,607 +1,1386 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>注音學英文</title>
-	<link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
-	<link rel="stylesheet" href="output.css">
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" href="venobox/venobox.css">
-	<link rel="stylesheet" href="assets/css/theme-default.css">
-	<link rel="stylesheet" href="assets/css/all.min.css">
-	<link rel="stylesheet" href="assets/css/responsive.css">
-	<link rel="shortcut icon" href="https://cornsoft.us/images/logo_en.png" />
-	<script src="assets/js/highcharts.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注音學英文</title>
+  <meta
+    name="description"
+    content="注音學英文把背單字變成一場會升級、能對戰、敢開口的英語冒險。從 RPG 闖關、AI 語音聊天到最新版本更新，快速看懂這款為台灣孩子設計的英文學習 App。"
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&amp;family=Space+Grotesk:wght@500;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/all.min.css">
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <style>
+    :root {
+      --bg: #fff7ed;
+      --surface: rgba(255, 255, 255, 0.82);
+      --surface-strong: #ffffff;
+      --ink: #172033;
+      --muted: #5b6476;
+      --line: rgba(23, 32, 51, 0.1);
+      --brand: #f59e0b;
+      --brand-deep: #e26d22;
+      --accent: #3b82f6;
+      --accent-soft: #dbeafe;
+      --mint: #d9f99d;
+      --shadow: 0 24px 60px rgba(109, 63, 13, 0.16);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(245, 158, 11, 0.32), transparent 34%),
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.22), transparent 28%),
+        linear-gradient(180deg, #fff8ef 0%, #fffdf8 42%, #f9fbff 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .shell {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 251, 245, 0.76);
+      border-bottom: 1px solid rgba(23, 32, 51, 0.06);
+    }
+
+    .site-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 78px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: 18px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%);
+      box-shadow: 0 12px 28px rgba(226, 109, 34, 0.24);
+    }
+
+    .brand-copy strong {
+      display: block;
+      font-size: 18px;
+    }
+
+    .brand-copy span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 15px;
+    }
+
+    .top-nav a {
+      color: var(--muted);
+      transition: color 0.2s ease;
+    }
+
+    .top-nav a:hover {
+      color: var(--ink);
+    }
+
+    .top-cta {
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(135deg, #1f2937 0%, #3b82f6 100%);
+      box-shadow: 0 12px 24px rgba(59, 130, 246, 0.24);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 44px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(18px);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 240px;
+      height: 240px;
+      top: 80px;
+      left: -60px;
+      background: rgba(245, 158, 11, 0.2);
+    }
+
+    .hero::after {
+      width: 260px;
+      height: 260px;
+      right: -90px;
+      top: 40px;
+      background: rgba(59, 130, 246, 0.12);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+      gap: 38px;
+      align-items: center;
+    }
+
+    .eyebrow,
+    .tiny-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .eyebrow {
+      color: #915100;
+      background: rgba(255, 237, 213, 0.94);
+      border: 1px solid rgba(245, 158, 11, 0.24);
+    }
+
+    .hero h1 {
+      margin: 18px 0 16px;
+      font-family: "Space Grotesk", "Noto Sans TC", sans-serif;
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      max-width: 11ch;
+    }
+
+    .hero h1 span {
+      color: var(--brand-deep);
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 620px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .store-button img {
+      width: 190px;
+      border-radius: 14px;
+      box-shadow: 0 18px 34px rgba(23, 32, 51, 0.12);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+
+    .store-button img:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 38px rgba(23, 32, 51, 0.16);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .metric-card,
+    .update-card,
+    .feature-card,
+    .timeline-card,
+    .gallery-card,
+    .quote-card,
+    .cta-panel,
+    .foot-panel {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .metric-card {
+      border-radius: 22px;
+      padding: 18px 18px 20px;
+    }
+
+    .metric-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 26px;
+      font-family: "Space Grotesk", sans-serif;
+    }
+
+    .metric-card span {
+      display: block;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 720px;
+    }
+
+    .hero-stack {
+      position: relative;
+      height: 100%;
+      min-height: 720px;
+    }
+
+    .phone-frame {
+      position: absolute;
+      width: min(300px, 56vw);
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 28px 52px rgba(23, 32, 51, 0.24);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .phone-frame img {
+      width: 100%;
+      height: auto;
+    }
+
+    .phone-primary {
+      right: 0;
+      top: 48px;
+      z-index: 3;
+    }
+
+    .phone-secondary {
+      left: 42px;
+      top: 170px;
+      width: min(250px, 44vw);
+      z-index: 2;
+      animation-delay: 1.2s;
+    }
+
+    .phone-tertiary {
+      right: 86px;
+      bottom: 8px;
+      width: min(226px, 40vw);
+      z-index: 1;
+      animation-delay: 2.1s;
+    }
+
+    .floating-update {
+      position: absolute;
+      left: 0;
+      top: 14px;
+      z-index: 4;
+      width: min(300px, 72vw);
+    }
+
+    .tiny-note {
+      margin-bottom: 12px;
+      color: #1e3a8a;
+      background: rgba(219, 234, 254, 0.94);
+      border: 1px solid rgba(59, 130, 246, 0.18);
+    }
+
+    .update-card {
+      border-radius: 24px;
+      padding: 20px;
+    }
+
+    .update-card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .update-card p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .dot-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .dot-list span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #5f3208;
+      background: rgba(255, 237, 213, 0.9);
+      border: 1px solid rgba(245, 158, 11, 0.16);
+    }
+
+    .section {
+      padding: 44px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .section-kicker {
+      margin: 0 0 10px;
+      color: var(--brand-deep);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      max-width: 10ch;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .updates-grid,
+    .features-grid,
+    .gallery-grid,
+    .quote-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .updates-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .features-grid,
+    .quote-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery-grid {
+      grid-template-columns: 1.1fr 1fr 1fr;
+      align-items: start;
+    }
+
+    .feature-card,
+    .quote-card {
+      border-radius: 24px;
+      padding: 24px;
+    }
+
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      color: #fff;
+      font-size: 20px;
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%);
+    }
+
+    .feature-card h3,
+    .quote-card h3,
+    .gallery-card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+
+    .feature-card p,
+    .quote-card p,
+    .gallery-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .updates-grid .update-card {
+      min-height: 208px;
+    }
+
+    .update-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .version-pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: #0f172a;
+      background: rgba(217, 249, 157, 0.82);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 14px;
+      padding-left: 34px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 11px;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(180deg, rgba(245, 158, 11, 0.45), rgba(59, 130, 246, 0.28));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 18px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -28px;
+      top: 18px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-deep) 100%);
+      box-shadow: 0 0 0 6px rgba(245, 158, 11, 0.14);
+    }
+
+    .timeline-card {
+      border-radius: 22px;
+      padding: 22px 24px;
+    }
+
+    .timeline-card .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .timeline-card h3 {
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+
+    .timeline-card ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .gallery-card {
+      border-radius: 28px;
+      overflow: hidden;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: auto;
+      background: #f6f6f6;
+    }
+
+    .gallery-copy {
+      padding: 18px 18px 20px;
+    }
+
+    .gallery-highlight {
+      display: grid;
+      gap: 18px;
+    }
+
+    .highlight-panel {
+      border-radius: 28px;
+      padding: 28px;
+      background:
+        linear-gradient(145deg, rgba(255, 233, 188, 0.92), rgba(255, 255, 255, 0.96)),
+        #fff;
+      border: 1px solid rgba(245, 158, 11, 0.16);
+      box-shadow: var(--shadow);
+    }
+
+    .highlight-panel h3 {
+      margin: 0 0 14px;
+      font-size: 26px;
+    }
+
+    .highlight-panel ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.9;
+    }
+
+    .quote-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-card::after {
+      content: "";
+      position: absolute;
+      right: -18px;
+      bottom: -20px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(245, 158, 11, 0.08);
+    }
+
+    .source-note {
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .cta-panel {
+      border-radius: 34px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: center;
+      background:
+        radial-gradient(circle at top left, rgba(245, 158, 11, 0.22), transparent 38%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 247, 237, 0.9));
+    }
+
+    .cta-panel h2 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+    }
+
+    .cta-panel p {
+      margin: 0;
+      max-width: 540px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .cta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .cta-pills span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(23, 32, 51, 0.06);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 14px;
+    }
+
+    .foot-panel {
+      border-radius: 28px 28px 0 0;
+      margin-top: 44px;
+      padding: 30px 0 34px;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .foot-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr 0.85fr;
+      gap: 20px;
+    }
+
+    .foot-panel h3,
+    .foot-panel h4 {
+      margin: 0 0 12px;
+    }
+
+    .foot-panel p,
+    .foot-panel li {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .foot-panel ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .foot-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .foot-social a {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: linear-gradient(135deg, #1f2937 0%, #475569 100%);
+    }
+
+    .copyright {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-14px);
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .cta-panel,
+      .gallery-grid,
+      .foot-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 640px;
+      }
+
+      .gallery-highlight {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .cta-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .top-nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      .hero-metrics,
+      .updates-grid,
+      .features-grid,
+      .quote-grid,
+      .gallery-highlight {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .section-head h2 {
+        max-width: none;
+      }
+
+      .hero-visual,
+      .hero-stack {
+        min-height: 580px;
+      }
+
+      .phone-primary {
+        right: 12px;
+      }
+
+      .phone-secondary {
+        left: 0;
+        top: 190px;
+      }
+
+      .phone-tertiary {
+        right: 48px;
+        bottom: 0;
+      }
+
+      .floating-update {
+        position: relative;
+        top: 0;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .shell {
+        width: min(var(--max), calc(100% - 20px));
+      }
+
+      .site-header-inner {
+        min-height: 70px;
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+
+      .top-cta {
+        padding: 10px 14px;
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        max-width: none;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .store-button img {
+        width: 168px;
+      }
+
+      .metric-card strong {
+        font-size: 22px;
+      }
+
+      .hero-visual,
+      .hero-stack {
+        min-height: 520px;
+      }
+
+      .phone-primary {
+        width: min(240px, 62vw);
+        right: 0;
+      }
+
+      .phone-secondary {
+        width: min(180px, 42vw);
+        top: 200px;
+      }
+
+      .phone-tertiary {
+        width: min(170px, 40vw);
+        right: 24px;
+      }
+
+      .update-card,
+      .feature-card,
+      .timeline-card,
+      .quote-card,
+      .cta-panel {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-	<div class="header-area style-two upper" id="sticky-header">
-		<div class="container">
-			<div class="m-logo">
-				<a href="#"><span class="logo-txt"></span></a>
-			</div>
-			<div class="menu-toggle">
-				<span class="open_bar"><i class="fas fa-bars"></i></span>
-				<span class="close_bar"><i class="fas fa-times"></i></span>
-			</div>
-			<div class="menu-wrapper">
-			<div class="row">
-				<div class="col-lg-12 col-md-12">
-					<div class="nav-menu">
-						<div class="header-logo">
-							<a href="index.html" class="text-white fw-bold text-decoration-none" style="font-size: 28px;">
-  注音學英文
-</a>
-						</div>
-						<div class="header-menu">
-							<ul>
-								<li><a href="index.html">首頁</a></li>
-								<li><a href="about.html">關於我們</a></li>
-							
-								<li><a href="#">資源</a>
-									<div class="sub-menu">
-										<ul>
-											<li><a href="FQA.html">常見問題</a></li><li><a href="contact.html">聯絡我們</a></li>
-											
-											
-										</ul>
-									</div>
-								</li>
-								<li><a href="#">其他</a>
-									<div class="sub-menu">
-										<ul>
-											
-											<li><a href="privacy-policy.html">免責聲明及隱私權條款</a></li>
-										</ul>
-									</div>
-								</li>
-								
-							</ul>
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
-	</div>   
-<!--==================================================-->
-<!-- Start hero-section -->
-<!--==================================================-->
-<div class="hero-section align-items-center d-flex">
-	<div class="container">
-		<div class="row"> 
-			<div class="col-lg-12 col-md-12">
-				<div class="hero-content">
-					<div class="hero-title">
-						<h1 style="font-size: 32px;">Learn English well, More doors open.</h1>
-					</div>
-					<div class="hero-text">
-						<p style="font-size: 20px;">學好英文，多一種可能</p>
-					</div>
-					<a target="_blank" href="https://apps.apple.com/us/app/%E6%B3%A8%E9%9F%B3%E5%AD%B8%E8%8B%B1%E6%96%87-%E5%AD%B8%E5%A5%BD%E8%8B%B1%E6%96%87-%E5%A4%9A%E4%B8%80%E7%A8%AE%E5%8F%AF%E8%83%BD/id6499569604"><img class="lazy" style="width: 200px; margin-top:10px;" src="https://cornsoft.us/images/applestore_download.png" alt="app store"></a>
-                  	<a target="_blank" href="https://play.google.com/store/apps/details?id=com.shaen.China"><img class="lazy" style="width: 200px; margin-top:10px;" src="https://cornsoft.us/images/googlepaly_download.png" alt="google paly"></a>
-				</div>                  
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- Start choose-area -->
-<!--==================================================-->
+  <header class="site-header">
+    <div class="shell site-header-inner">
+      <a class="brand" href="index.html" aria-label="注音學英文首頁">
+        <span class="brand-mark">EN</span>
+        <span class="brand-copy">
+          <strong>注音學英文</strong>
+          <span>Zhuyin Learn English Adventure</span>
+        </span>
+      </a>
+      <nav class="top-nav" aria-label="主要導覽">
+        <a href="#updates">最新更新</a>
+        <a href="#features">核心玩法</a>
+        <a href="#timeline">版本記錄</a>
+        <a href="#gallery">畫面預覽</a>
+        <a href="about.html">關於我們</a>
+        <a href="FQA.html">常見問題</a>
+      </nav>
+      <a class="top-cta" href="#download">立即下載</a>
+    </div>
+  </header>
 
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <span class="eyebrow">
+            <i class="fas fa-rocket"></i>
+            2026 夏季改版重點
+          </span>
+          <h1>把背單字，<span>改造成一場會升級的冒險。</span></h1>
+          <p>
+            注音學英文不只是在教發音。根據 Google Play 與 App Store 的公開頁面，
+            近期更新已經一路加進遊戲模式、AI 語音聊天、對戰功能與冒險者留言，
+            讓孩子從「被動背單字」轉成「主動闖關、敢開口、想再玩一局」。
+          </p>
 
+          <div class="hero-actions" id="download">
+            <a
+              class="store-button"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://apps.apple.com/tw/app/%E6%B3%A8%E9%9F%B3%E5%AD%B8%E8%8B%B1%E6%96%87-%E5%AD%B8%E5%A5%BD%E8%8B%B1%E6%96%87-%E5%A4%9A%E4%B8%80%E7%A8%AE%E5%8F%AF%E8%83%BD/id6499569604"
+            >
+              <img src="assets/images/applestore_download.png" alt="下載到 App Store">
+            </a>
+            <a
+              class="store-button"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://play.google.com/store/apps/details?id=com.shaen.China"
+            >
+              <img src="assets/images/googlepaly_download.png" alt="前往 Google Play 下載">
+            </a>
+          </div>
 
-<div class="choose-area">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6 col-md-6">
-				<div class="choose-title">
-					<h4>我們是誰</h4>
-					<h2>為什麼是注音學英文</h2>
-					<p>學英文不只是背單字，我們用最熟悉的 注音（ㄅㄆㄇㄈ）＋ KK 音標，幫你把「聽得到的聲音」連到「看得懂的字」。從發音、單字到句型與口說練習，循序漸進，學好英文，開啟更多可能。 </p>
-				</div>
-				<div class="row">
-					<div class="col-lg-6 col-md-6">
-						<div class="choose-menu-box">
-							<ul>
-								<li><i class="fas fa-check"></i>注音 × KK 雙標示</li>
-								<li><i class="fas fa-check"></i>單字卡＋重點例句</li>
-								<li><i class="fas fa-check"></i>單字發音評分</li>
-								<li><i class="fas fa-check"></i>分級課程與間隔複習</li>
-							</ul>
-						</div>
-						<div class="choose-button">
-							<a href="#">know more</a>
-						</div>
-					</div>
-					<div class="col-lg-6 col-md-6">
-						<div class="choose-menu-box">
-							<ul>
-								<li><i class="fas fa-check"></i>一鍵發音</li>
-								<li><i class="fas fa-check"></i>我的造句</li>
-								<li><i class="fas fa-check"></i>進度追蹤與每日任務</li>
-								<li><i class="fas fa-check"></i>離線查詢單字</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-6">
-				<img src="assets/images/school.png" alt="">
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- Start service-area -->
-<!--==================================================-->
-<div class="service-area">
-	<div class="container">
- <div class="meta"> <span class="badge">學習成效</span> <span class="badge">目標：6000 單字</span> <span class="badge">期間：10 個月</span> </div> <h1>十個月內累積 6000 單字</h1> <p class="lead">此為參考演示圖，每個人學習成效不同，因人而異，僅供參考。</p> <figure> <div id="chart" aria-label="十個月累積單字量折線圖"></div> <figcaption>提示：滑鼠移到折線上可看到每月累積；手機可點資料點。</figcaption> </figure> </div>
-  <div id="chart" style="max-width:900px;height:20px;margin:24px;"></div>
-  </div>
-  </div>
+          <div class="hero-metrics">
+            <article class="metric-card">
+              <strong>2.2.2</strong>
+              <span>目前 App Store 顯示版本，最近一次更新日期為 2026 年 8 月 5 日。</span>
+            </article>
+            <article class="metric-card">
+              <strong>RPG + AI</strong>
+              <span>商店文案主打打怪闖關、分級挑戰，並補上 AI 語音聊天練習。</span>
+            </article>
+            <article class="metric-card">
+              <strong>對戰化</strong>
+              <span>近期更新加入對戰與冒險者留言，整體方向已更靠近社群化學習。</span>
+            </article>
+          </div>
+        </div>
 
-  <script>
-    // 等整頁與 Highcharts 載入完再初始化，避免偶發沒顯示
-    window.addEventListener('load', function () {
-      Highcharts.chart('chart', {
-        chart: { type: 'spline' },
-        title: { text: null },
-        xAxis: { categories: ['第1月','第2月','第3月','第4月','第5月','第6月','第7月','第8月','第9月','第10月'] },
-        yAxis: { title: { text: '累積單字數' }, max: 6000, tickInterval: 1000 },
-        legend: { enabled: false },
-        tooltip: { valueSuffix: ' 字' },
-        plotOptions: { series: { marker: { enabled: false } }, spline: { lineWidth: 4, color: '#000' } },
-        series: [{ name: '累積單字數', data: [400,1000,1600,2200,2900,3600,4300,5100,5700,6000], color: '#000', lineColor: '#000' }],
-        credits: { enabled: false }
-      });
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-stack">
+            <div class="floating-update">
+              <div class="tiny-note">
+                <i class="fas fa-bolt"></i>
+                商店最近更新導向
+              </div>
+              <article class="update-card">
+                <h3>近期重心已經不是只有單字卡</h3>
+                <p>
+                  2026 年 7 月下旬後的版本，明顯往「冒險互動」靠攏。
+                  對戰功能、冒險者留言、AI 聊天與遊戲模式，都是這次首頁改版的主角。
+                </p>
+                <div class="dot-list">
+                  <span>對戰功能</span>
+                  <span>冒險者留言</span>
+                  <span>AI 語音聊天</span>
+                  <span>遊戲模式</span>
+                </div>
+              </article>
+            </div>
 
-      // 若放在「隱藏的分頁/手風琴」內，延遲 reflow 可防止寬度為 0
-      setTimeout(function () {
-        var c = Highcharts.charts && Highcharts.charts[0];
-        if (c) c.reflow();
-      }, 300);
-    });
-  </script>
+            <figure class="phone-frame phone-primary">
+              <img src="assets/images/2.png" alt="注音學英文等級關卡畫面" loading="lazy">
+            </figure>
+            <figure class="phone-frame phone-secondary">
+              <img src="assets/images/3.png" alt="注音學英文排行榜畫面" loading="lazy">
+            </figure>
+            <figure class="phone-frame phone-tertiary">
+              <img src="assets/images/1.png" alt="注音學英文系統設定畫面" loading="lazy">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<div class="service-area">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-lg-12 col-md-12">
-				<div class="main-title">
-					<h1>重要功能</h1>
-				</div>
-				<div class="section-title">
-					<div class="sub-title">
-						<h2>重要功能</h2>
-						<p>本APP結合注音輔助、跟讀評分與單字分類，提升英文學習效率與發音準確度。</p>
-					</div>
-				</div>
-			</div>
-			</div>
-			<div class="row pt-60">
-				<div class="owl-carousel service_list">
-					<div class="col-lg-12 col-md-12">
-						<div class="single-service-box">
-							<div class="service-thumb">
-								<img src="assets/images/new1.jpg" alt="">
-								<div class="single-title">
-									<h3>發音挑戰</h3>
-								</div>
-								<div class="service-content">
-									<div class="service-content-inner">
-										<div class="single-title-2">
-											<h3>發音挑戰</h3>
-										</div>
-										<div class="service-doler">
-											<p>發音挑戰功能透過語音辨識技術，比對使用者的發音與標準音準確度，即時給出分數與回饋。讓學習者了解發音強項與需改進之處，提升口說自信與發音精準度。</p>
-											<a href="#">Know Detailse</a>
-										</div>
-									</div>
-								
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-12 col-md-12">
-						<div class="single-service-box">
-							<div class="service-thumb">
-								<img src="assets/images/new4.jpg" alt="">
-								<div class="single-title">
-									<h3>單字分級分類</h3>
-								</div>
-								<div class="service-content">
-									<div class="service-content-inner">
-										<div class="single-title-2">
-											<h3>單字分級分類</h3>
-										</div>
-										<div class="service-doler">
-											<p>單字分級分類功能依照難易度與主題將單字分組，讓學習者可循序漸進掌握詞彙。從基礎到進階，搭配主題分類學習，能更有效率地建立系統化字彙能力。</p>
-											<a href="#">Know Detailse</a>
-										</div>
-									</div>
-								
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-12 col-md-12">
-						<div class="single-service-box">
-							<div class="service-thumb">
-								<img src="assets/images/new3.jpg" alt="">
-								<div class="single-title">
-									<h3>熟悉度分類</h3>. bnm 
-								</div>
-								<div class="service-content">
-									<div class="service-content-inner">
-										<div class="single-title-2">
-											<h3>熟悉度分類</h3>
-										</div>
-										<div class="service-doler">
-											<p>單字熟悉度分類功能依據使用者的學習進度與答題表現，自動將單字分為熟悉、需複習與未掌握三類。透過智能分類，讓學習者能針對弱項加強記憶，提升學習效率。</p>
-											<a href="#">Know Detailse</a>
-										</div>
-									</div>
-								
-								</div>
-							</div>
-						</div>
-					</div>
+    <section class="section" id="updates">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Recent Update Focus</p>
+            <h2>把商店更新，直接變成首頁主視覺。</h2>
+          </div>
+          <p>
+            與其只說「我們有學英文」，不如直接告訴使用者最近到底更新了什麼。
+            這一版首頁把版本內容拉到前面，讓家長與孩子一眼看到遊戲性正在變強。
+          </p>
+        </div>
 
-					<div class="col-lg-12 col-md-12">
-						<div class="single-service-box">
-							<div class="service-thumb">
-								<img src="assets/images/new.jpg" alt="">
-								<div class="single-title">
-									<h3>注音輔助教學</h3>
-								</div>
-								<div class="service-content">
-									<div class="service-content-inner">
-										<div class="single-title-2">
-											<h3>注音輔助教學</h3>
-											
-										</div>
-										<div class="service-doler">
-											
-											<p>注音輔助教學透過將英文發音對應熟悉的注音符號，幫助學習者快速掌握英文字母與發音關聯，降低學習門檻。結合聽力與口說練習，能有效培養正確語感與發音基礎。</p>
-											<a href="#">Know Detailse</a>
-										</div>
-									</div>
-								
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-12 col-md-12">
-						<div class="single-service-box">
-							<div class="service-thumb">
-								<img src="assets/images/new2.jpg" alt="">
-								<div class="single-title">
-									<h3>學習提醒</h3>
-								</div>
-								<div class="service-content">
-									<div class="service-content-inner">
-										<div class="single-title-2">
-											<h3>學習提醒</h3>	
-										</div>
-										<div class="service-doler">
-											<p>學習提醒功能可依使用者設定的時間自動通知，幫助養成每日學習習慣。透過固定提醒與進度追蹤，讓英文練習更有規律，提升學習效率與持續動力。</p>
-											<a href="#">Know Detailse</a>
-										</div>
-									</div>
-								
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- Start experience-area -->
-<!--==================================================-->
-<div class="experience-area">
-	<div class="container">
-		<div class="row exp">
-			<div class="col-lg-3 col-md-3 pr-0">
-				<div class="experience-title">
-					<h1>1</h1>
-				</div>
-			</div>
-			<div class="col-lg-9 col-md-9 pl-0">
-				<div class="experience-titles">
-					<h2>Years of <span>Experienced</span> </h2>
-					<h3>觀看介紹影片</h3>
-					<div class="rs-video">
-						<div class="animate-border">
-							<a class="video-vemo-icon venobox vbox-item" data-vbtype="iframe" data-autoplay="true" href="https://cornsoft.us/video/a1.mp4">
-									<i class="fa fa-play"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!--==================================================-->
-<!-- Start tab-area-->
-<!--==================================================-->
-<div class="tab-area">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 col-md-12">
-				<div class="main-title">
-					<h1>每日任務</h1>
-				</div>
-				<div class="section-title">
-					<div class="sub-title">
-						<h2>每日任務</h2>
-						<p>完成每日任務，十個月的教育學程，掌握英文沒問題。 </p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-12 col-md-12 padding-bottom">
-				<ul class="tabs">
-					<li class="active" rel="tab1">背單字20個</li>
-					<li rel="tab2">聽力測驗</li>
-					<li rel="tab3">發音挑戰</li>
-				</ul>
-				<div class="tab_container">
-					<h3 class="d_active tab_drawer_heading" rel="tab1">Tab 1</h3>
-					<div id="tab1" class="tab_content">
-						<ul class="accordion">
-							<li>
-								<span>背單字20個</span>
-									<div class="tab-single-box">
-												<p>每天背20個英文單字，是穩定提升英文能力的關鍵習慣。這個任務不僅能幫助記住常用詞彙，還能在日常對話、閱讀與寫作中更靈活運用。建議可搭配例句與發音練習，加深理解與記憶效果。透過每天持續學習與複習，逐步累積將能顯著擴充字彙量，讓英文表達更流暢自然，建立長期學習的自信與成就感。</p>
-							</li>
-						</ul>
-					</div>
-					<!-- #tab1 -->
-					<h3 class="tab_drawer_heading" rel="tab2">Tab 2</h3>
-					<div id="tab2" class="tab_content">
-						<ul class="accordion">
-							<li>
-								<span>聽力測驗</span>
-									<div class="tab-single-box">
-												<p>聽力測驗是評估考生理解英語口語能力的測驗。內容通常包含對話、短文或廣播，考生需根據聽到的內容回答問題。測驗重點在辨識關鍵資訊、語氣、主旨及細節。建議考生熟悉各種口音、多加練習聽力技巧，如預測內容與抓取重點，以提升聽力理解與反應速度。</p>
-										</div>
-							</li>
-						</ul>
-					</div>
-					<!-- #tab2 -->
-					<h3 class="tab_drawer_heading" rel="tab3">Tab 3</h3>
-					<div id="tab3" class="tab_content">
-							<ul class="accordion">
-								<li>
-									<span>發音挑戰</span>
-										<div class="tab-single-box">
-													<p>發音挑戰是訓練與評估英語口說準確度的活動。使用者需跟讀單字或句子，系統會分析發音的正確性與清晰度，並給予分數或回饋。此挑戰能幫助學習者改善重音、語調及口型，培養正確的語音習慣。持續練習可提升口語流暢度與自信心，是英語學習中重要的一環。</p>
-											</div>
-								</li>
-							</ul>
-						</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!--==================================================-->
-<!-- Start footer-area-->
-<!--==================================================-->
-<div class="footer-area">
-	<div class="container">
+        <div class="updates-grid">
+          <article class="update-card">
+            <div class="update-topline">
+              <span>2026.08.05</span>
+              <span class="version-pill">v2.2.2</span>
+            </div>
+            <h3>雙平台同步更新</h3>
+            <p>
+              Google Play 與 App Store 都顯示 2026 年 8 月 5 日的最新修正版。
+              雖然這次是穩定性調整，但代表雙平台節奏已經同步。
+            </p>
+          </article>
 
-		<div class="row">
-			<div class="col-lg-6 col-md-6">
-				<div class="single-footer-box">
-					<div class="footer-content">
-						<div class="footer-logo">
-							<h2 class="text-white">注音學英文</h2>
-						</div>
-						<div class="footer-title">
-							<p>注音學英文是幫助台灣學習者以注音為橋接、快速建立發音與單字量的工具型 App。</p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="single-footer-box-2">
-					<div class="footer-content">
-						<div class="footer-title">
-							<h3>其他</h3>
-						</div>
-						<ul>
-							
-							<li><a href="privacy-policy.html">免責聲明及隱私權條款</a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="single-footer-box-2">
-					<div class="footer-content">
-						<div class="footer-title">
-							<h3>聯絡方式</h3>
-						</div>
-						<ul class="footer">
-							<li><span>e-mail:</span> <br>chithink123@gamil.com</li>						
-						</ul>
-						<ul class="footer">
-							<li><span>social media:</span></li>						
-						</ul>
-						<ul class="social-links">
-							<li><a href="https://line.me/R/ti/p/@708mhxiq"><i class="fab fa-line"></i></a></li>
-							<li><a href="https://www.facebook.com/abcdefenglish"><i class="fab fa-facebook-f"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row upper">
-			<div class="col-lg-12 col-md-12">
-				<div class="copy-right-box">
-					<div class="copy-right-title">
-						<h3>Copyright © CornSoft 2026 </h3>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-	<!--==================================================-->
-	<!--start fTo Top-->
-	<!--===================================================-->
-	<div class="scroll-area">
-		<div class="top-wrap">
-			<div class="go-top-btn-wraper">
-				<div class="go-top go-top-button">
-					<i class="fas fa-arrow-up"></i>
-					<i class="fas fa-arrow-up"></i>
-				</div>
-			</div>
-		</div>
-	</div>
-		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-		<!-- jquery js -->	
-		<script src="assets/js/vendor/jquery-3.2.1.min.js"></script>
-		<!-- bootstrap js -->	
-		<script src="assets/js/bootstrap.min.js"></script>
-		<!-- carousel js -->
-		<script src="assets/js/owl.carousel.min.js"></script>
-		<!-- counterup js -->
-		<script src="assets/js/jquery.counterup.min.js"></script>
-		<!-- waypoints js -->
-		<script src="assets/js/waypoints.min.js"></script>
-		<!-- wow js -->
-		<script src="assets/js/wow.js"></script>
-		<!-- imagesloaded js -->
-		<script src="assets/js/imagesloaded.pkgd.min.js"></script>
-		<!-- venobox js -->
-		<script src="venobox/venobox.js"></script>
-		<!-- ajax mail js -->
-		<script src="assets/js/ajax-mail.js"></script>
-		<!--  animated-text js -->	
-		<script src="assets/js/animated-text.js"></script>
-		<!-- venobox min js -->
-		<script src="venobox/venobox.min.js"></script>
-		<!-- isotope js -->
-		<script src="assets/js/isotope.pkgd.min.js"></script>
-		<!-- jquery nivo slider pack js -->
-		<script src="assets/js/jquery.nivo.slider.pack.js"></script>
-		<!-- jquery meanmenu js -->	
-		<script src="assets/js/jquery.meanmenu.js"></script>
-		<script src="assets/js/popper.min.js"></script>
-		<!-- jquery scrollup js -->	
-		<script src="assets/js/jquery.scrollUp.js"></script>
-		<!-- theme js -->	
-		<script src="assets/js/theme.js"></script>
+          <article class="update-card">
+            <div class="update-topline">
+              <span>2026.07.24</span>
+              <span class="version-pill">v2.2.1</span>
+            </div>
+            <h3>冒險者留言＋對戰</h3>
+            <p>
+              這是目前最有遊戲感的節點。從個人練習跨到玩家互動，首頁因此改成更偏闖關與競賽的語氣。
+            </p>
+          </article>
 
-		<script>
-			(function($) {
-				$('.accordion > li:eq(0) a').addClass('active').next().slideDown();
+          <article class="update-card">
+            <div class="update-topline">
+              <span>2026.07.11</span>
+              <span class="version-pill">v2.1.1</span>
+            </div>
+            <h3>AI 語音聊天上線</h3>
+            <p>
+              孩子不只跟讀，還能往互動式開口前進。這讓 app 的定位從背單字工具，往「敢說英語」再推一步。
+            </p>
+          </article>
 
-				$('.accordion a').click(function(j) {
-					var dropDown = $(this).closest('li').find('p');
+          <article class="update-card">
+            <div class="update-topline">
+              <span>2026.05.10</span>
+              <span class="version-pill">v2.0.1</span>
+            </div>
+            <h3>遊戲模式正式成形</h3>
+            <p>
+              商店版本記錄明確提到新增遊戲模式、個人訊息與單字發音調整，這就是這波全面改版最重要的轉折。
+            </p>
+          </article>
 
-					$(this).closest('.accordion').find('p').not(dropDown).slideUp();
+          <article class="update-card">
+            <div class="update-topline">
+              <span>2026.05.05</span>
+              <span class="version-pill">v2.0.0</span>
+            </div>
+            <h3>從 KK 轉向 IPA</h3>
+            <p>
+              發音標示系統改成 IPA，搭配注音輔助後，整體教學表述可以更國際化，也更適合做清楚的功能說明。
+            </p>
+          </article>
 
-					if ($(this).hasClass('active')) {
-						$(this).removeClass('active');
-					} else {
-						$(this).closest('.accordion').find('a.active').removeClass('active');
-						$(this).addClass('active');
-					}
+          <article class="update-card">
+            <div class="update-topline">
+              <span>商店主文案</span>
+              <span class="version-pill">RPG</span>
+            </div>
+            <h3>RPG 戰鬥闖關已成品牌敘事</h3>
+            <p>
+              App Store 與 Google Play 的介紹都在強調戰鬥闖關、成就解鎖與分級挑戰，因此首頁也改成更像冒險遊戲宣傳頁。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-					dropDown.stop(false, true).slideToggle();
+    <section class="section" id="features">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Gameplay First</p>
+            <h2>新版首頁，改講孩子會想玩的部分。</h2>
+          </div>
+          <p>
+            你的 app 原本就不是傳統教科書型產品。這次我把頁面主線改成「會玩、會升級、會互動、會開口」，
+            讓定位和商店內容對齊。
+          </p>
+        </div>
 
-					j.preventDefault();
-				});
-			})(jQuery);
-		</script>
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-dragon"></i></div>
+            <h3>RPG 闖關式學習</h3>
+            <p>
+              商店描述已經明講 RPG 戰鬥闖關。新版首頁把這件事放大，讓使用者理解這不是普通字卡，而是會推進的冒險地圖。
+            </p>
+          </article>
 
-		<script>
-	    $(".tab_content").hide();
-    $(".tab_content:first").show();
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+            <h3>分級地圖與解鎖節奏</h3>
+            <p>
+              你現有截圖已經有清楚的 Level 版面。首頁直接展示等級關卡，視覺上比抽象文字更能讓家長理解學習路徑。
+            </p>
+          </article>
 
-  / if in tab mode /
-    $("ul.tabs li").click(function() {
-    
-      $(".tab_content").hide();
-      var activeTab = $(this).attr("rel"); 
-      $("#"+activeTab).fadeIn();    
-    
-      $("ul.tabs li").removeClass("active");
-      $(this).addClass("active");
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-comments"></i></div>
+            <h3>AI 聊天＋冒險者留言</h3>
+            <p>
+              近期版本把互動往前推，從單向聽讀升級成對話與留言感。這會讓品牌從學習工具更接近孩子願意每天打開的陪玩夥伴。
+            </p>
+          </article>
 
-    $(".tab_drawer_heading").removeClass("d_active");
-    $(".tab_drawer_heading[rel^='"+activeTab+"']").addClass("d_active");
-    
-    });
-  / if in drawer mode /
-  $(".tab_drawer_heading").click(function() {
-      
-      $(".tab_content").hide();
-      var d_activeTab = $(this).attr("rel"); 
-      $("#"+d_activeTab).fadeIn();
-    
-    $(".tab_drawer_heading").removeClass("d_active");
-      $(this).addClass("d_active");
-    
-    $("ul.tabs li").removeClass("active");
-    $("ul.tabs li[rel^='"+d_activeTab+"']").addClass("active");
-    });
-  
-  
-  /* Extra class "tab_last" 
-     to add border to right side
-     of last tab */
-  $('ul.tabs li').last().addClass("tab_last");
-</script>
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+            <h3>對戰與排行榜刺激回訪</h3>
+            <p>
+              排行、對戰、成就這些元素天然就能提高留存。首頁現在不再弱化這塊，而是主動把它視為產品亮點。
+            </p>
+          </article>
 
-</script>
-	<!--jquery js-->
-	<script>
-		 $(window).on('scroll', function () {
-        var scrolled = $(window).scrollTop();
-        if (scrolled > 300) $('.go-top').addClass('active');
-        if (scrolled < 300) $('.go-top').removeClass('active');
-    });
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-volume-up"></i></div>
+            <h3>注音輔助 × IPA 發音</h3>
+            <p>
+              保留產品最核心的差異化。學習不是被遊戲感蓋掉，而是用遊戲節奏承載「注音橋接英語發音」這個主軸。
+            </p>
+          </article>
 
-    $('.go-top').on('click', function () {
-        $("html, body").animate({
-            scrollTop: "0"
-        }, 1200);
-    });
-</script>
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-wifi"></i></div>
+            <h3>設定與離線情境也被看見</h3>
+            <p>
+              你原本首頁幾乎沒有提到實用性。現在補上離線模式與語速音量控制，對家長來說會更安心，也更像完整產品。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-    <script>
-    	    // sticky
-    var wind = $(window);
-    var sticky = $('#sticky-header');
-    wind.on('scroll', function () {
-        var scroll = wind.scrollTop();
-        if (scroll <100) {
-            sticky.removeClass('sticky-nav');
-        } else {
-            sticky.addClass('sticky-nav');
-        }
-    });
-    </script>
+    <section class="section" id="timeline">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Version Timeline</p>
+            <h2>截至 2026 年 8 月的版本演進。</h2>
+          </div>
+          <p>
+            這段時間的更新路線很清楚: 先修發音基礎，再切進遊戲模式，接著補 AI 與對戰互動。
+            我把它整理成一條更有故事感的時間軸。
+          </p>
+        </div>
 
+        <div class="timeline">
+          <div class="timeline-item">
+            <article class="timeline-card">
+              <div class="meta">
+                <span>2026 年 8 月 5 日</span>
+                <span>App Store v2.2.2</span>
+                <span>Google Play 最新更新同步</span>
+              </div>
+              <h3>穩定化修正</h3>
+              <ul>
+                <li>雙平台最新公開版本都顯示為修正部分問題。</li>
+                <li>代表前面幾波大功能更新後，現在已進入調整與收斂期。</li>
+              </ul>
+            </article>
+          </div>
 
-	</body>
-	</html>
+          <div class="timeline-item">
+            <article class="timeline-card">
+              <div class="meta">
+                <span>2026 年 7 月 24 日</span>
+                <span>v2.2.1</span>
+              </div>
+              <h3>社群互動開始發酵</h3>
+              <ul>
+                <li>新增冒險者留言功能。</li>
+                <li>新增對戰功能，產品感受從個人練習走向互動挑戰。</li>
+              </ul>
+            </article>
+          </div>
 
+          <div class="timeline-item">
+            <article class="timeline-card">
+              <div class="meta">
+                <span>2026 年 7 月 11 日</span>
+                <span>v2.1.1</span>
+              </div>
+              <h3>AI 語音聊天加入日常練口說</h3>
+              <ul>
+                <li>把跟讀評分往更自然的對話練習延伸。</li>
+                <li>首頁也因此改為更強調「敢講」而不只是「敢背」。</li>
+              </ul>
+            </article>
+          </div>
 
+          <div class="timeline-item">
+            <article class="timeline-card">
+              <div class="meta">
+                <span>2026 年 5 月 10 日</span>
+                <span>v2.0.1</span>
+              </div>
+              <h3>遊戲模式正式被看見</h3>
+              <ul>
+                <li>新增遊戲模式。</li>
+                <li>新增個人訊息。</li>
+                <li>調整單字發音，讓玩法與學習基礎一起往前推。</li>
+              </ul>
+            </article>
+          </div>
 
+          <div class="timeline-item">
+            <article class="timeline-card">
+              <div class="meta">
+                <span>2026 年 5 月 5 日</span>
+                <span>v2.0.0</span>
+              </div>
+              <h3>發音系統打底</h3>
+              <ul>
+                <li>處理每日 20 單的發音問題。</li>
+                <li>將 KK 音標改為 IPA，幫整個產品建立更一致的發音標示路線。</li>
+              </ul>
+            </article>
+          </div>
+        </div>
 
+        <p class="source-note">
+          更新整理依 2026 年 8 月 20 日查詢之 Google Play 與 App Store 公開頁面內容彙整。
+        </p>
+      </div>
+    </section>
 
+    <section class="section" id="gallery">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Screen Preview</p>
+            <h2>把真實畫面拿上檯面，遊戲感就成立了。</h2>
+          </div>
+          <p>
+            我直接使用你現有的 app 截圖來支撐新版敘事，避免頁面只剩概念詞。
+            這樣家長與使用者能立刻看到分級、排行與設定場景。
+          </p>
+        </div>
 
+        <div class="gallery-grid">
+          <article class="gallery-card">
+            <img src="assets/images/2.png" alt="等級分級關卡畫面" loading="lazy">
+            <div class="gallery-copy">
+              <h3>等級關卡</h3>
+              <p>用 Level 地圖說明孩子不是在亂背，而是在一關一關往前推進。</p>
+            </div>
+          </article>
 
+          <div class="gallery-highlight">
+            <article class="gallery-card">
+              <img src="assets/images/3.png" alt="排行榜畫面" loading="lazy">
+              <div class="gallery-copy">
+                <h3>背單排行</h3>
+                <p>排行榜畫面很適合配合對戰與成就敘事，讓競賽感更完整。</p>
+              </div>
+            </article>
+
+            <article class="gallery-card">
+              <img src="assets/images/1.png" alt="系統設定畫面" loading="lazy">
+              <div class="gallery-copy">
+                <h3>離線與語速設定</h3>
+                <p>不是只有闖關，也有家長在意的離線使用、音量與語速控制。</p>
+              </div>
+            </article>
+          </div>
+
+          <aside class="highlight-panel">
+            <h3>這版首頁新增的主敘事</h3>
+            <ul>
+              <li>從工具型 App 改成「遊戲化英文冒險」定位。</li>
+              <li>首頁第一屏就對齊商店版本更新與特色文案。</li>
+              <li>把近期新增的對戰、留言、AI 聊天變成視覺主角。</li>
+              <li>保留注音輔助發音這個最核心的產品差異化。</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">Positioning</p>
+            <h2>現在首頁傳達的，不再只是學習，而是參與感。</h2>
+          </div>
+          <p>
+            商店文案在講的是孩子的動機，而不是課綱。首頁也應該跟著這個方向，
+            讓家長先看到「孩子願不願意打開它」，再看到「學了哪些東西」。
+          </p>
+        </div>
+
+        <div class="quote-grid">
+          <article class="quote-card">
+            <h3>對孩子</h3>
+            <p>
+              它像一個會升級、會解鎖、會拿成就的冒險遊戲。
+              孩子先被玩法吸引，再在闖關過程中把發音與單字記住。
+            </p>
+          </article>
+
+          <article class="quote-card">
+            <h3>對家長</h3>
+            <p>
+              它不是單純遊戲。注音輔助、IPA 發音、AI 對話、分級單字與設定控制，
+              讓整體仍然保有很強的教學邏輯與陪學價值。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="cta-panel">
+          <div>
+            <h2>下一步，不是再解釋功能，而是邀請大家進來玩。</h2>
+            <p>
+              首頁已改成更像遊戲型產品的展示方式。如果你要，我下一輪也可以順手把
+              <a href="about.html">關於我們</a>、
+              <a href="FQA.html">常見問題</a>、
+              <a href="contact.html">聯絡我們</a>
+              一起改成同一套新視覺。
+            </p>
+            <div class="cta-pills">
+              <span>RPG 闖關</span>
+              <span>AI 語音聊天</span>
+              <span>對戰功能</span>
+              <span>冒險者留言</span>
+              <span>注音 × IPA</span>
+            </div>
+          </div>
+
+          <div class="cta-actions">
+            <a
+              class="store-button"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://apps.apple.com/tw/app/%E6%B3%A8%E9%9F%B3%E5%AD%B8%E8%8B%B1%E6%96%87-%E5%AD%B8%E5%A5%BD%E8%8B%B1%E6%96%87-%E5%A4%9A%E4%B8%80%E7%A8%AE%E5%8F%AF%E8%83%BD/id6499569604"
+            >
+              <img src="assets/images/applestore_download.png" alt="下載到 App Store">
+            </a>
+            <a
+              class="store-button"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://play.google.com/store/apps/details?id=com.shaen.China"
+            >
+              <img src="assets/images/googlepaly_download.png" alt="前往 Google Play 下載">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot-panel">
+    <div class="shell">
+      <div class="foot-grid">
+        <section>
+          <h3>注音學英文</h3>
+          <p>
+            以台灣孩子最熟悉的注音為橋樑，把英文發音、單字記憶與遊戲闖關結合在一起。
+            這次首頁改版，也正式把「學英文像玩冒險遊戲」放到品牌最前面。
+          </p>
+        </section>
+
+        <section>
+          <h4>快速連結</h4>
+          <ul>
+            <li><a href="about.html">關於我們</a></li>
+            <li><a href="FQA.html">常見問題</a></li>
+            <li><a href="contact.html">聯絡我們</a></li>
+            <li><a href="privacy-policy.html">免責聲明及隱私權條款</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h4>聯絡方式</h4>
+          <ul>
+            <li>e-mail: chithink123@gamil.com</li>
+            <li>support: present810209@gmail.com</li>
+          </ul>
+          <div class="foot-social" aria-label="社群連結">
+            <a target="_blank" rel="noopener noreferrer" href="https://line.me/R/ti/p/@708mhxiq" aria-label="Line"><i class="fab fa-line"></i></a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/abcdefenglish" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          </div>
+        </section>
+      </div>
+
+      <div class="copyright">Copyright © CornSoft 2026</div>
+    </div>
+  </footer>
+</body>
+</html>
